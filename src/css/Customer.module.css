@@ -1,0 +1,32 @@
+.custImg {
+    height: 250px;
+    width: 200px;
+}
+.custDetails {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.custElement {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: 10px 0px;
+    padding: 10px 0px;
+    cursor: pointer;
+}
+.custElement p {
+    font-size: 24px;
+}
+.btnGroup button {
+    margin: 0px 10px 20px 10px;
+    padding: 10px 30px;
+    font-size: 20px;
+}
+
+@media (max-width: 500px) {
+    .custElement p {
+        font-size: 20px;
+    }
+}
