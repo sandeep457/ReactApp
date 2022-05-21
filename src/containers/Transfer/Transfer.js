@@ -16,7 +16,7 @@ class Transfer extends Component {
     state = {
         amount: "",
         currency:"£",
-        from: 'GBP',
+        from: this.props.sender.currentBalance.slice(-1) === '€' ? 'EUR' : this.props.sender.currentBalance.slice(-1) === '$' ? 'USD' : 'GBP',
         into: 'GBP',
         isLoading: false,
         senderAmount: this.props.sender.currentBalance,
@@ -28,7 +28,6 @@ class Transfer extends Component {
     }
     handleInto = (event) => {
         event.preventDefault();
-        this.setState({ from: this.state.into });
         this.setState({ into: event.currentTarget.value },function() { this.convertCurrency(this.state)});
     }
     convertCurrency = async ({ from, into }, event) => {
@@ -134,7 +133,7 @@ class Transfer extends Component {
                       <Dropdowns
                         labelName="From"
                         handleChange={this.handleInto}
-                        value={this.state.into}
+                        value={this.state.from}
                       ></Dropdowns>
                     </div>
                   </div>
