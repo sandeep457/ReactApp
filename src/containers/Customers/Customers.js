@@ -28,7 +28,7 @@ class Customers extends Component {
                 </div>
                 { Object.keys(this.props.users).map((key, index) => (
                     <Customer user={this.props.users[key]}
-                            key={this.props.users[key].uid}
+                            key={index}
                             index={index+1}
                             clik={() => this.props.addSender(this.props.users[key])}
                             link={"/customer/"+index} />
