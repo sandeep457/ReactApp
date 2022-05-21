@@ -9,13 +9,13 @@
 .custRow p {
   font-size: 24px;
   font-family: "Dela Gothic One", cursive;
-  border-right: 1px solid black;
   color: floralwhite;
   margin: 10px auto;
   padding: 10px auto;
 }
 .custRow p:nth-child(1) {
   width: 10%;
+  padding-left: 5px;
 }
 .custRow p:nth-child(2) {
   width: 28%;

@@ -21,10 +21,10 @@ class Home extends Component {
             <div className={classes.spbg + " container align-items-center mt-5"}>
           {newUser.map((value, index) => (
            
-                    <div class="testimonials">
-                    <div class="card">
+                    <div className="testimonials">
+                    <div className="card">
                       <h3>Account Details</h3>
-                        <div class="content">
+                        <div className="content">
                                 <div><label>Name:</label> <span> {value.username}</span></div>
                                 <div><label>Email:</label> <span> {value.email}</span></div>
                                 <div><label>Account Number:</label> <span> {value.accountNumber}</span></div>

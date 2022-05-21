@@ -6,13 +6,17 @@ const initialState = {
         id: "",
         username: "",
         email: "",
-        currentBalance: ""
+        currentBalance: "",
+        accountNumber:"",
+        accountType:""
     },
     receiver: {
         id: "",
         username: "",
         email: "",
-        currentBalance: ""
+        currentBalance: "",
+        accountNumber:"",
+        accountType:""
     },
     transfer: false
 }
@@ -25,7 +29,9 @@ const reducer = (state=initialState, action) => {
                     id: action.data.id,
                     username: action.data.username,
                     email: action.data.email,
-                    currentBalance: action.data.currentBalance
+                    currentBalance: action.data.currentBalance,
+                    accountNumber: action.data.accountNumber,
+                    accountType: action.data.accountType
                 }
             });
         case actionTypes.ADD_RECEIVER:
@@ -34,7 +40,9 @@ const reducer = (state=initialState, action) => {
                     id: action.data.id,
                     username: action.data.username,
                     email: action.data.email,
-                    currentBalance: action.data.currentBalance
+                    currentBalance: action.data.currentBalance,
+                    accountNumber: action.data.accountNumber,
+                    accountType: action.data.accountType
                 }
             });
         case actionTypes.TRANSFER_SUCCESS:

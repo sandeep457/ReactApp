@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Form, Alert } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { useUserAuth } from "../context/UserAuthContext";
+import { auth, db } from "../firebase";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -10,6 +11,7 @@ const Signup = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [accNo, setAccNo] = useState("");
+  const [accType, setAccType] = useState("Savings Account");
   const [password, setPassword] = useState("");
   const { signUp } = useUserAuth();
   let navigate = useNavigate();
@@ -18,7 +20,7 @@ const Signup = () => {
     e.preventDefault();
     setError("");
     try {
-      await signUp(email,  firstName, lastName, accNo, password);
+      await signUp(auth, email,  firstName, lastName, accNo, accType, password);
       navigate("/");
     } catch (err) {
       setError(err.message);
@@ -56,6 +58,19 @@ const Signup = () => {
               placeholder="Account number" className="input"
               onChange={(e) => setAccNo(e.target.value)}
             />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicAccType">
+            <Form.Control
+            as="select"
+            value={accType}
+            placeholder="Account Type" className="input"
+            onChange={e => {
+              setAccType(e.target.value);
+            }}
+            >
+            <option value="Savings Account">Savings Account</option>
+            <option value="Current Account">Current Account</option>
+          </Form.Control>
             </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Control

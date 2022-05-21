@@ -30,10 +30,7 @@
 }
 .amountInput {
     width: 30%;
-    margin: 20px 0px;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    margin: 0 auto !important;
 }
 
 .btnGroup button {

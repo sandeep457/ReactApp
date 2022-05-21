@@ -23,6 +23,7 @@ class Customers extends Component {
                 <div className={classes.custRow}>
                     <p>User Name</p>
                     <p>Email</p>
+                    <p>Account Type</p>
                     <p>Current Balance</p>
                 </div>
                 { Object.keys(this.props.users).map((key, index) => (

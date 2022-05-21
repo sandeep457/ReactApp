@@ -9,7 +9,7 @@ const Customer = (props) => {
         <div>
             <Header/>
         <div className="container">
-            <div class="content" style={{display:"grid",marginTop: "50px",fontSize:"20px"}}>
+            <div className="content" style={{display:"grid",marginTop: "50px",fontSize:"20px"}}>
                 <div style={{margin: "0 auto",padding:"15px 0px"}}><label>Name:</label> <span> {props.sender.username}</span></div>
                 <div style={{margin: "0 auto",padding:"15px 0px"}}><label>Email:</label> <span> {props.sender.email}</span></div>
                 <div style={{margin: "0 auto",padding:"15px 0px"}}><label>Balance:</label> <span> {props.sender.currentBalance}</span></div>

@@ -2,12 +2,14 @@ import { createContext, useContext, useEffect, useState } from "react";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  getAuth,
   onAuthStateChanged,
   signOut,
   GoogleAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import { auth, db } from "../firebase";
+import { auth, db} from "../firebase";
+import { ref, set } from "firebase/database";
 
 const userAuthContext = createContext();
 export function UserAuthContextProvider({ children }) {
@@ -16,24 +18,17 @@ export function UserAuthContextProvider({ children }) {
   function logIn(email, password) {
     return signInWithEmailAndPassword(auth, email, password)
 }
-  function signUp(email, firstName, lastName, accNo,password) {
-    return createUserWithEmailAndPassword(auth, email, password, firstName, lastName, accNo )
+  function signUp(auth, email, firstName, lastName, accNo, accType, password) {
+   
+    return createUserWithEmailAndPassword(auth, email, password, firstName, lastName, accNo, accType )
     .then(user => {
-      // addDoc(collection(db, "users"), {
-      //   uid: user.user.uid,
-      //   email: email,
-      //   firstName: firstName,
-      //   lastName: lastName,
-      //   accountNumber: accNo
-      // });
-      var ref = new Firebase('https://reactauth-6f119-default-rtdb.firebaseio.com');
-      ref.child('users').push({
-        id: user.user.uid,
-        email: email,
+      set(ref(db, 'users/' + user.user.uid), {
         username: firstName + " " +lastName,
         accountNumber: accNo,
-        accountType: "Savings Account",
-        currentBalance: "5000 £"
+        accountType: accType,
+        currentBalance: "5000£",
+        email: email,
+        id:  user.user.uid
       });
       });
     };
@@ -41,7 +36,6 @@ export function UserAuthContextProvider({ children }) {
   function logOut() {
     return signOut(auth);
   }
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentuser) => {
       console.log("Auth", currentuser);
