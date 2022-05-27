@@ -3,7 +3,7 @@ https://grand-axolotl-a191a3.netlify.app/
 
 # Getting Started with React App
 
-In the project directory go inside 'USHAASSIGMENT01', you can run: 
+In the project directory go inside 'ReactApp-main' folder , you can run: 
 
 ### `npm install`
 
