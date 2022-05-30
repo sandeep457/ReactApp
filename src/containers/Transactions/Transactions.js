@@ -15,7 +15,7 @@ class Transactions extends Component {
             <div>
                 <Header/>
             <ReactToPrint trigger={() => {
-            return <a href="#" style={{display:'inline-block',position: "absolute",top:'130px', left:'1200px'}}>Print Bank statement</a>;
+            return <a href="#" style={{display:'inline-block',position: "relative",top:'100px', left:'1015px'}}>Print Bank statement</a>;
           }}
           content={() => this.componentRef}/>
 
