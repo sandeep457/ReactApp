@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, useRef} from 'react';
 import classes from './Transactions.module.css';
 import Header from "../../components/header";
 import {connect} from 'react-redux';
 import Transaction from './Transaction/Transaction';
+import ReactToPrint  from 'react-to-print';
 
 
 class Transactions extends Component {
-
     // componentWillMount() {
     //     this.props.getAllTransactions();      
     // }
@@ -14,9 +14,14 @@ class Transactions extends Component {
         return (
             <div>
                 <Header/>
-            <div className="container py-5">
+            <ReactToPrint trigger={() => {
+            return <a href="#" style={{display:'inline-block',position: "absolute",top:'130px', left:'1200px'}}>Print Bank statement</a>;
+          }}
+          content={() => this.componentRef}/>
+
+            <div className="container py-5" ref={el=>(this.componentRef=el)}>
                 <h1>Transactions</h1>
-                <div className={classes.custRow}>
+                <div className={classes.custRow} >
                     <p>Sl No</p>
                     <p>Sender</p>
                     <p>Receiver</p>
@@ -33,7 +38,20 @@ class Transactions extends Component {
         );
     }
 }
-
+class Example extends React.Component  {
+render(){
+        return (
+            <div>
+                <ReactToPrint
+        trigger={() => <button>Print this out!</button>}
+        content={() => this.componentRef}
+      />
+      <Transactions ref={el => (this.componentRef = el)} />
+            </div>
+        )
+        }
+    
+}
 const mapStatetoProps = state => {
     return {
         transactions: state.transaction.transactions
